@@ -23,7 +23,12 @@
 
 #else
 
-/* Needs _DEFAULT_SOURCE with glibc */
+#if __GLIBC__ >= 2 && __GLIBC_MINOR__ > 19
+#define _DEFAULT_SOURCE
+#else
+#define _BSD_SOURCE
+#endif
+
 #include <endian.h>
 
 #endif
