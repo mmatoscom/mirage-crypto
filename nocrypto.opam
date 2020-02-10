@@ -24,10 +24,13 @@ depends: [
   "bigarray-compat"
   "sexplib"
   "ppx_sexp_conv"
-  ("mirage-no-xen" | ("mirage-xen" & "zarith-xen"))
-  ("mirage-no-solo5" | ("mirage-solo5" & "zarith-freestanding"))
+  ("mirage-no-xen" | ("mirage-xen" & "mirage-xen-posix" & "zarith-xen"))
+  ("mirage-no-solo5" | ("mirage-solo5" & "ocaml-freestandin" & "zarith-freestanding"))
 ]
 
 depopts: [ "unix" "lwt" "mirage-entropy" ]
 
-conflicts: [ "mirage-xen" {< "2.2.0"} ]
+conflicts: [
+  "mirage-xen" {< "3.1.0"}
+  "ocaml-freestanding" {< "0.4.1"}
+]
